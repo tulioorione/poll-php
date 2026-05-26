@@ -16,8 +16,8 @@
     </nav>
     <header class="bg-white">
         <div class="container py-5">
-            <h1 class="display-6 mb-1">Bem-vindo</h1>
-            <p class="text-muted mb-0">Subtitulo</p>
+            <h1 class="display-6 mb-1"><?= $hero ?></h1>
+            <p class="text-muted mb-0"><?= $heroLead ?></p>
 
         </div>
     </header>
