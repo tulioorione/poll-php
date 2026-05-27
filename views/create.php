@@ -4,9 +4,16 @@ $error = '';
 
 if($_SERVER['REQUEST_METHOD'] === "POST") {
     $q = $_POST['question'];
-    $labels = array_map('trim', $_POST['options'] ?? []);
+    $labels = array_values(array_filter(array_map('trim', $_POST['options'] ?? [])));
+
+    if($q === '' || count($labels) < 2) {
+        $error = 'Informe a pergunta e pelo menos 2 opções...';
+    }
 }
 ?>
+<?php if($error): ?>
+    <div class="alert alert-danger py-2"><?= $error ?></div>
+<?php endif; ?>    
 
 <div class="card">
     <div class="card-body">
