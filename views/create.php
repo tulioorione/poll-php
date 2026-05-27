@@ -1,3 +1,12 @@
+<?php
+$db = pdo();
+$error = '';
+
+if($_SERVER['REQUEST_METHOD'] === "POST") {
+    $q = $_POST['question'];
+    $labels = array_map('trim', $_POST['options'] ?? []);
+}
+?>
 
 <div class="card">
     <div class="card-body">

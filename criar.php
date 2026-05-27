@@ -1,5 +1,7 @@
  <?php
 require __DIR__."/template.php";
+require __DIR__."/lib.php";
+
 
 render('create', [
     'title' => 'Criação de Enquete',
