@@ -8,6 +8,28 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
 
     if($q === '' || count($labels) < 2) {
         $error = 'Informe a pergunta e pelo menos 2 opções...';
+    } else {
+        $db->beginTransaction();
+
+        try {
+            $st = $db->prepare('INSERT INTO polls (question) VALUES (?)');
+            $st->execute([$q]);
+
+            $pid = (int)$db->lastInsertId();
+
+            $st = $db->prepare('INSERT INTO poll_options (poll_id, label) VALUES (?, ?)');
+            foreach($labels as $l) {
+                $st->execute([$pid, $l]);
+            }
+            $enq_ativa = $db->exec('UPDATE settings SET current_poll_id={$pid} WHERE od = 1');
+            $db->commit();
+            header('Location: resultados.php');
+            exit;
+
+        } catch (Throwable $e){
+            $db->rollBack();
+            $error = 'Erro ao criar enquete...';
+        }
     }
 }
 ?>
