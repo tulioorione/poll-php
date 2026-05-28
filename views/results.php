@@ -7,7 +7,6 @@ include_once("resultados.php");
     <div class="card">
         <div class="card-body">
             <div class="mb-2 fw-semibold"><?= $data['poll']['question']; ?></div>
-        </div>
         <?php
             $total = max(1, (int) $data['total']);
             foreach($data['options'] as $o): 
@@ -25,6 +24,7 @@ include_once("resultados.php");
 
         <?php endforeach; ?>
         <div class="text-muted small">Total de votos: <?= (int)$data['total']; ?></div>
+        </div>
     </div>
 <?php endif; ?>
 
