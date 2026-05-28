@@ -1,3 +1,8 @@
+<img width="1918" height="950" alt="Captura1r" src="https://github.com/user-attachments/assets/132d312f-88da-4a64-b3ed-7d6c2a62ebe5" />
+<img width="1917" height="950" alt="Capturar2" src="https://github.com/user-attachments/assets/a939bb72-bb0a-48b5-9e6b-969cdfb6d6c9" />
+
+
+
 # Poll PHP — Site de Notícias com Sistema de Enquetes
 
 Aplicação web desenvolvida em **PHP puro** com o objetivo de consolidar os fundamentos da linguagem, integração com banco de dados via **PDO**, organização de código em camadas e práticas básicas de segurança em aplicações web.
