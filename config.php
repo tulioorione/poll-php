@@ -6,4 +6,4 @@ define("DB_USER", "root");
 define("DB_PASS", "");
 
 // Cookies para votação
-define("VOTE_COOKIE-DAYS", 30);
+define("VOTE_COOKIE_DAYS", 30);

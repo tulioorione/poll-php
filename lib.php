@@ -33,6 +33,15 @@ function get_current_poll() {
     foreach($options as $o) {
         $total += (int)$o['votes'];
     }
-    
+
     return ['poll' => $poll, 'options' => $options, 'total' => $total];
+}
+
+function has_voted($pollId) {
+    return isset($_COOKIE['voted_poll_'.$pollId]);
+}
+
+function set_voted_cookie($pollId) {
+    $days = defined("VOTE_COOKIE_DAYS");
+    setcookie('voted_poll_'.$pollId, '1', time() + 60*60*24*$days);
 }
