@@ -1,4 +1,8 @@
 </main>
+<?php
+$withWidget = $withWidget ?? false;
+$pollWidgetData = $data ?? null;
+?>
 
     <footer class="border-top bg-white mt-auto">
         <div class="container py-3">
@@ -9,7 +13,7 @@
     </footer>
 
     <!-- ENQUETE -->
-    <?php if($withWidget): ?>
+    <?php if($withWidget && $pollWidgetData): ?>
         <?php require __DIR__.'/poll_widget.php'; ?>
     <?php endif; ?>
 </body>
