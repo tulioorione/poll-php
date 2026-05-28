@@ -19,4 +19,20 @@ function get_current_poll() {
     $row = $db->query("SELECT current_poll_id FROM settings WHERE id = 1")->fetch();
     
     if(!$row || !$row['current_poll_id']) { return null; }   
+
+    $pid = (int)$row['current_poll_id'];
+    $st = $db->prepare('SELECT * FROM polls WHERE id = ?');
+    $st->execute([$pid]);
+    $poll = $st->fetch();
+
+    $st = $db->prepare('SELECT * FROM poll_options WHERE poll_id = ? ORDER BY id');
+    $st->execute([$pid]);
+    $options = $st->fetchAll();
+
+    $total = 0;
+    foreach($options as $o) {
+        $total += (int)$o['votes'];
+    }
+    
+    return ['poll' => $poll, 'options' => $options, 'total' => $total];
 }
