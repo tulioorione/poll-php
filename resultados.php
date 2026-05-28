@@ -8,5 +8,6 @@ render('results', [
     'title' => 'Resultado da Enquete',
     'hero' => 'Resultados',
     'heroLead' => 'Veja os percentuais da enquete ativa.',
-    'data' => $data
+    'data' => $data,
+    'withWidget' => false,
 ]);

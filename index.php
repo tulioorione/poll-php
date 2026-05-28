@@ -1,8 +1,13 @@
  <?php
 require __DIR__."/template.php";
+require __DIR__."/lib.php";
+
+$data = get_current_poll();
 
 render('home', [
     'title' => 'Home do site',
     'hero' => 'Bem-vindo',
-    'heroLead' => 'Site de Notícias: leia o que quiser'
+    'heroLead' => 'Site de Notícias: leia o que quiser',
+    'data' => $data,
+    'withWidget' => true,
 ]);
