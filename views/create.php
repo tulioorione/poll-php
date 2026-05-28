@@ -3,7 +3,7 @@ $db = pdo();
 $error = '';
 
 if($_SERVER['REQUEST_METHOD'] === "POST") {
-    $q = $_POST['question'];
+    $q = trim($_POST['question'] ?? '');
     $labels = array_values(array_filter(array_map('trim', $_POST['options'] ?? [])));
 
     if($q === '' || count($labels) < 2) {
@@ -21,7 +21,10 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
             foreach($labels as $l) {
                 $st->execute([$pid, $l]);
             }
-            $enq_ativa = $db->exec('UPDATE settings SET current_poll_id={$pid} WHERE od = 1');
+
+            $st = $db->prepare('UPDATE settings SET current_poll_id = ? WHERE id = 1');
+            $st->execute([$pid]);
+
             $db->commit();
             header('Location: resultados.php');
             exit;

@@ -1,7 +1,11 @@
 <?php if(!$data): ?>
     <div class="alert alert-warning">Nenhuma enquete ativa.</div>
 <?php else: ?>
-    <h1>TEMOS ENQUETE</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-2 fw-semibold"><?= $data['poll']['question']; ?></div>
+        </div>
+    </div>
 <?php endif; ?>
 
 <div class="mt-3">
